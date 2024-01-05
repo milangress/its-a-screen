@@ -28,14 +28,18 @@ const mainFlow = [
             pos: percent(20, 20, 80, 60),
             next: false,
             modules: [
+                // {
+                //     type: 'circleText',
+                //     content: ['1Hello', '2world', '3again']
+                // },
                 {
-                    type: 'circleText',
-                    content: ['1Hello', '2world', '3again']
+                    type: 'circleImg',
+                    url: ['https://picsum.photos/800/800', 'https://picsum.photos/200/200', 'https://picsum.photos/700/700']
                 },
-                {
-                    type: 'bgImg',
-                    url: 'https://picsum.photos/800/800'
-                },
+                // {
+                //     type: 'bgImg',
+                //     url: 'https://picsum.photos/800/800'
+                // },
                 {
                     type: 'circleTitle',
                     content: ['Hello', 'world', 'again']

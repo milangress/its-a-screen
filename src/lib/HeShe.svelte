@@ -11,9 +11,10 @@
     import bgImg from "./BgImg.svelte"
     import text from "./Text.svelte"
     import circleText from "./CircleText.svelte"
+    import circleImg from "./CircleImg.svelte"
     // eslint-disable-next-line no-unused-vars
     const comps = {
-        bgImg, text, circleText
+        bgImg, text, circleText, circleImg
     }
 
     let current = 0
