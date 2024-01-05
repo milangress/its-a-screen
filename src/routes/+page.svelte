@@ -1,2 +1,9 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    function openPopup() {
+        window.open("/he", String(Math.random()), "left=50,top=50,width=200,height=100,popup");
+    }
+</script>
+
+
+
+<a on:click={openPopup}>test</a>
