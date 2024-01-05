@@ -10,9 +10,10 @@
 
     import bgImg from "./BgImg.svelte"
     import text from "./Text.svelte"
+    import circleText from "./CircleText.svelte"
     // eslint-disable-next-line no-unused-vars
     const comps = {
-        bgImg, text
+        bgImg, text, circleText
     }
 
     let current = 0
@@ -51,7 +52,7 @@
     $: availableModules = currentPage.modules.filter(module => comps[module.type])
     let defaultClick = (event, NEXT = currentPage.next) => {
         console.log('NEXT', event, NEXT, currentPage.next)
-        if (NEXT === undefined) {
+        if (NEXT === undefined || NEXT === 'NEXT') {
             if (nextPage) {
                 window.open(`/${gender}?p=${current + 1}`, `${gender}`, nextPageWindowString + ",popup");
             }
@@ -124,6 +125,6 @@
 {/if}
 
 {#each availableModules as module}
-    <svelte:component this={comps[module.type]} config="{module}"/>
+    <svelte:component this={comps[module.type]} config="{module}" on:NEXT={(e) => defaultClick(e,'NEXT')}/>
 {/each}
 

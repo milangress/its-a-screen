@@ -25,12 +25,12 @@ const mainFlow = [
     { // 1
         she: null,
         he: {
-            title: 'WHAT THAT EVER THE QUESTION?',
             pos: percent(20, 20, 80, 60),
+            next: false,
             modules: [
                 {
-                    type: 'text',
-                    content: 'Hello world'
+                    type: 'circleText',
+                    content: ['1Hello', '2world', '3again']
                 },
                 {
                     type: 'bgImg',
