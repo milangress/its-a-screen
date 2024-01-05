@@ -29,6 +29,7 @@
             // window.moveTo(0,0)
         }
         console.log(mainFlow[current][gender])
+        setTitle()
     })
 
     let currentPage = {}
@@ -46,13 +47,11 @@
     }
     $:nextPageWindowString = posString(nextPage)
     $:nextPageOtherWindowString = posString(nextPageOther)
-    let defaultClick = () => {
-        if (currentPage.next === 'self') {
-            current++
-            $page.url.searchParams.set('p', current);
-            goto(`?${$page.url.searchParams.toString()}`);
-        }
-        if (currentPage.next === undefined) {
+
+    $: availableModules = currentPage.modules.filter(module => comps[module.type])
+    let defaultClick = (event, NEXT = currentPage.next) => {
+        console.log('NEXT', event, NEXT, currentPage.next)
+        if (NEXT === undefined) {
             if (nextPage) {
                 window.open(`/${gender}?p=${current + 1}`, `${gender}`, nextPageWindowString + ",popup");
             }
@@ -62,8 +61,37 @@
             // let daddy = window.self;
             // daddy.opener = window.self;
             // daddy.close();
+        if (NEXT === 'self') {
+                current++
+                $page.url.searchParams.set('p', current);
+                goto(`?${$page.url.searchParams.toString()}`);
+            }
         } else {
             currentPage.next()
+        }
+    }
+
+    let title = 'he'
+    function setTitle() {
+        const currentDoc = mainFlow[current][gender]
+        title = currentDoc.title || gender
+        console.log(current)
+        console.log('title', title, mainFlow[current][gender])
+        let circleTitle = currentDoc.modules.find(module => module.type === 'circleTitle')
+        if (circleTitle) {
+            let titleCounter = 0
+            setInterval(function(){
+                console.log('circleTitle', titleCounter)
+                if (titleCounter >= circleTitle.content.length) {
+                    titleCounter = 0
+                }
+                title = circleTitle.content[titleCounter]
+                titleCounter++
+            }, 800);
+        } else if (title.length >= 10){
+            setInterval(function(){
+                title = title.substring(1, title.length) + title.substring(0, 1);
+            }, 100);
         }
     }
 
@@ -73,22 +101,29 @@
 
 
 <svelte:head>
-    <title>he</title>
+    <title>{title}</title>
 </svelte:head>
 
 <svelte:body on:click={defaultClick } />
-{gender}, {otherGender}
-<hr>
-current: {current}
 
-{nextPageWindowString}
-<hr>
-{nextPageOtherWindowString}
+{#if false || current === 0}
+    {gender}, {otherGender}
+    <hr>
+    current: {current}
 
-{#each currentPage.modules as module}
-    <div>
-        {module.type}
-    </div>
+    {nextPageWindowString}
+    <hr>
+    {nextPageOtherWindowString}
+    <hr>
+    {#each currentPage.modules as module}
+        <div>
+            {module.type}
+            <pre>{JSON.stringify(module, null, 2)}</pre>
+        </div>
+    {/each}
+{/if}
+
+{#each availableModules as module}
     <svelte:component this={comps[module.type]} config="{module}"/>
 {/each}
 

@@ -1,10 +1,10 @@
 
 function percent(top, left, width, height) {
     //percentage to window size in pixels
-    top = top * window.innerHeight / 100
-    left = left * window.innerWidth / 100
-    width = width * window.innerWidth / 100
-    height = height * window.innerHeight / 100
+    top = top * screen.height / 100
+    left = left * screen.width / 100
+    width = width * screen.width / 100
+    height = height * screen.height / 100
     return {
         top: `${top}`,
         left: `${left}`,
@@ -17,12 +17,16 @@ function percent(top, left, width, height) {
 const mainFlow = [
     {
         she: {modules: []},
-        he: {modules: []}
+        he: {
+            title: 'WE ARE NOT AS SMALL AS YOU THINK',
+            modules: []
+        }
     },
     { // 1
         she: null,
         he: {
-            pos: percent(20, 20, 80, 50),
+            title: 'WHAT THAT EVER THE QUESTION?',
+            pos: percent(20, 20, 80, 60),
             modules: [
                 {
                     type: 'text',
@@ -30,7 +34,11 @@ const mainFlow = [
                 },
                 {
                     type: 'bgImg',
-                    url: 'https://picsum.photos/200/300'
+                    url: 'https://picsum.photos/800/800'
+                },
+                {
+                    type: 'circleTitle',
+                    content: ['Hello', 'world', 'again']
                 }
             ]
         }
@@ -51,7 +59,7 @@ const mainFlow = [
                 },
                 {
                     type: 'bgImg',
-                    url: 'https://picsum.photos/200/300'
+                    url: 'https://picsum.photos/800/800'
                 }
             ]
         }
@@ -71,7 +79,7 @@ const mainFlow = [
                 },
                 {
                     type: 'bgImg',
-                    url: 'https://picsum.photos/200/300'
+                    url: 'https://picsum.photos/800/800'
                 }
             ]
         },
@@ -89,7 +97,7 @@ const mainFlow = [
                 },
                 {
                     type: 'bgImg',
-                    url: 'https://picsum.photos/200/300'
+                    url: 'https://picsum.photos/800/800'
                 }
             ]
         }
@@ -109,7 +117,7 @@ const mainFlow = [
                 },
                 {
                     type: 'bgImg',
-                    url: 'https://picsum.photos/200/300'
+                    url: 'https://picsum.photos/800/800'
                 }
             ]
         },
@@ -127,7 +135,7 @@ const mainFlow = [
                 },
                 {
                     type: 'bgImg',
-                    url: 'https://picsum.photos/200/300'
+                    url: 'https://picsum.photos/800/800'
                 }
             ]
         }
