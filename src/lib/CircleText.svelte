@@ -12,7 +12,7 @@
             const index = config.content.indexOf(currentText)
             if (index < config.content.length - 1) {
                 currentText = config.content[index + 1]
-            } else {
+            } else if(config.STOP === undefined){
                 dispatch('NEXT')
             }
         }

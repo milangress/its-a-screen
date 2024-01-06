@@ -51,23 +51,37 @@
     $:nextPageOtherWindowString = posString(nextPageOther)
 
     $: availableModules = currentPage.modules.filter(module => comps[module.type])
+
+    let onKeyDown = (event) => {
+        console.log('onKeyDown', event)
+        if (event.key === 'ArrowRight') {
+            defaultClick(event, 'NEXT')
+        }
+        if (event.key === 'ArrowLeft') {
+            defaultClick(event, 'BACK')
+        }
+    }
     let defaultClick = (event, NEXT = currentPage.next) => {
         console.log('NEXT', event, NEXT, currentPage.next)
         if (NEXT === undefined || NEXT === 'NEXT') {
             if (nextPage) {
-                window.open(`/${gender}?p=${current + 1}`, `${gender}`, nextPageWindowString + ",popup");
+                window.open(`/${gender}?p=${current + 1}`, `${gender}`, nextPageWindowString + ",popup,location=0");
             }
             if (nextPageOther) {
-                window.open(`/${otherGender}?p=${current + 1}`, `${otherGender}`, nextPageOtherWindowString + ",popup");
+                window.open(`/${otherGender}?p=${current + 1}`, `${otherGender}`, nextPageOtherWindowString + ",popup,location=0");
             }
             // let daddy = window.self;
             // daddy.opener = window.self;
             // daddy.close();
+        }
+        if (NEXT === 'BACK') {
+            window.open(`/${gender}?p=${current - 1}`, `${gender}`, nextPageWindowString + ",popup,location=0");
+            window.open(`/${otherGender}?p=${current - 1}`, `${otherGender}`, nextPageOtherWindowString + ",popup,location=0");
+        }
         if (NEXT === 'self') {
-                current++
-                $page.url.searchParams.set('p', current);
-                goto(`?${$page.url.searchParams.toString()}`);
-            }
+            current++
+            $page.url.searchParams.set('p', current);
+            goto(`?${$page.url.searchParams.toString()}`);
         } else {
             currentPage.next()
         }
@@ -106,7 +120,7 @@
     <title>{title}</title>
 </svelte:head>
 
-<svelte:body on:click={defaultClick } />
+<svelte:body on:click={defaultClick } on:keydown={onKeyDown}/>
 
 {#if false || current === 0}
     {gender}, {otherGender}
