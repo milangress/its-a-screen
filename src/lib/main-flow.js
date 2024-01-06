@@ -13,6 +13,29 @@ function percent(top, left, width, height) {
     }
 }
 
+const DEFAULT_MODULES = {
+    text: {
+        type: 'text',
+        content: 'Hello world'
+    },
+    bgImg: {
+        type: 'bgImg',
+        url: 'https://picsum.photos/800/800'
+    },
+    circleText: {
+        type: 'circleText',
+        content: ['1Hello', '2world', '3again']
+    },
+    circleImg: {
+        type: 'circleImg',
+        url: ['https://picsum.photos/800/800', 'https://picsum.photos/200/200', 'https://picsum.photos/700/700']
+    },
+    circleTitle: {
+        type: 'circleTitle',
+        content: ['Hello', 'world', 'again']
+    }
+}
+
 
 const mainFlow = [
     {
