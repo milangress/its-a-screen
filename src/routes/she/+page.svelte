@@ -1,5 +1,5 @@
 <script>
-    import HeShe from '$lib/Heshe.svelte';
+    import HeShe from '$lib/HeShe.svelte';
 
 
 </script>
