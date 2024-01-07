@@ -2,6 +2,7 @@
     import {onMount} from "svelte"
     import {page} from "$app/stores"
     import Text from "$lib/Text.svelte"
+    import BgImg from "$lib/BgImg.svelte"
 
     let text = ''
     onMount(() => {
@@ -14,4 +15,5 @@
 </svelte:head>
 
 <Text config={{content: text}}/>
+<BgImg config="{{url: '/waves5.gif'}}"></BgImg>
 

@@ -4,7 +4,7 @@
     }
 
     let titleAttr = config.content[0]
-    let duration = config?.duration ||2500
+    let duration = config?.duration ||2000
 
     function circle() {
         let i = 0

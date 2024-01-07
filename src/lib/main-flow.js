@@ -84,6 +84,15 @@ const DEFAULT_MODULES = {
     },
 }
 
+function text(content = 'txt') {
+    return [
+            {
+                type: 'text',
+                content: content
+            }
+        ]
+}
+
 
 const mainFlow = [
     {
@@ -93,20 +102,53 @@ const mainFlow = [
             modules: []
         }
     },
+    {
+        he: {
+            pos: percent(50, 50, 35, 35),
+            bgImg: '/waves.gif',
+            modules: [
+                {
+                    type: 'text',
+                    content: 'I had corona last week and Im feeling quite melancholic right now.'
+                },
+                {
+                    type: 'circleAttr',
+                    content: ['Somehow', 'winter arrived later', 'but now I can’t escape.']
+                }
+            ]
+        }
+    },
+    {
+        she: {
+            pos: percent(50, 20, 35, 20),
+            modules: text('This is an experiment… a collection of fragments strung together. working title: „on the wrong side of the river bank“')
+        }
+    },
     { // 1
         she: null,
         he: {
             pos: percent(10, 20, 35, 80),
-            // next: false,
-            bgImg: '/weinachtsbaum.jpeg',
-            onMount() {
-                 createPopup('/singles/text', {txt: 'test sdf erf'}, randomPos(20, 10))
-
-            },
             modules: [
                 {
-                    type: 'circleAttr',
-                    content: ['Hello', 'world', 'again']
+                    type: 'bgImg',
+                    url: '/weinachtsbaum.jpeg',
+                    filter: false
+                }
+            ]
+        }
+    },
+    {
+        she: {
+            pos: percent(50, 50, 35, 25),
+            next: false,
+            modules: [
+                {
+                    type: 'text',
+                    content: 'This was our Christmas three this year.'
+                },
+                {
+                    type: 'circleText',
+                    content: ['None of us had Christmas decoration,', '(it feels like that something to inherit and not to buy)', 'so each of us chose a sailor moon character, and we printed our different images of them to hang them on the tree.']
                 }
             ]
         }
@@ -114,25 +156,385 @@ const mainFlow = [
     { // 2
         she: null,
         he: {
-            pos: {
-                top: 400,
-                left: 600,
-                width: 300,
-                height: 300
-            },
+            pos: percent(30, 10, 80, 30),
+            bgImg: '/waves2.gif',
             modules: [
                 {
                     type: 'text',
-                    content: 'Hello world'
-                },
-                {
-                    type: 'bgImg',
-                    url: 'https://picsum.photos/800/800'
+                    class: 'superBig',
+                    content: '✷*  🎀  1  🎀  *✷'
                 }
             ]
         }
     },
-    { // 3
+    {
+        she: {
+            pos: percent(50, 50, 35, 25),
+            modules: [
+                {
+                    type: 'text',
+                    content: 'After Christmas this year, we all got a late Christmas gift on the 26. of December. '
+                }
+            ]
+        }
+    },
+    {
+        she: {
+            pos: percent(15, 50, 30, 75),
+            modules: [
+                {
+                    type: 'bgImg',
+                    url: '/schauble.jpg'
+                }
+            ]
+
+        },
+        he: {
+            pos: percent(10,10,30,10),
+            modules: text('Wolfgang Schäuble died.')
+        }
+    },
+    {
+        she: {
+            pos: percent(50, 50, 35, 25),
+            next: false,
+            modules: [
+                {
+                    type: 'circleText',
+                    content: ['If you don’t know him, he is kind of the German Henry Kissinger.', 'Or maybe even the European one.', 'This brought back memories of the 2010 European debt crisis. Where Schäuble was deeply involved in the austerity measurements / punishment of Greece resulting in the sellout of Greek infrastructure to German and international companies to the enrichment of Germany.']
+                }
+            ]
+        }
+    },
+    {
+        he: {
+            pos: percent(70,10,30,10),
+            onMount() {
+                // createPopup('/singles/text', {txt: '»ein Land der Nichtstuer und Korrupteure«,<br> "a country of do-nothings and corruptors"'}, randomPos(40, 10))
+                // createPopup('/singles/text', {txt: 'jetzt müsse endlich »Schluss sein mit der Schummelei«;<br> Now "the cheating must finally come to an end"'}, randomPos(40, 10))
+                // createPopup('/singles/text', {txt: '»diese Griechen« seien pleite, aber Milliarden-Bettler«. <br> "these Greeks" are broke, but "beggars worth billions"'}, randomPos(40, 10))
+                // createPopup('/singles/text', {txt: 'Man dürfe jetzt »keineswegs die Faulheit der Griechen unterstützen«; <br> One should now "by no means support the laziness of the Greeks"'}, randomPos(40, 15))
+                // createPopup('/singles/text', {txt: 'schließlich sei »Griechenland im Grunde ein orientalisches Land«, <br> After all, "Greece is basically an oriental country"'}, randomPos(45, 10))
+                // createPopup('/singles/text', {txt: 'in Hellas herrschten »orientalische Lebensgesetze«. <br> Hellas was governed by "oriental laws of life"'}, randomPos(40, 10))
+
+            },
+            modules: text('Which has a long history…')
+        }
+    },
+    {
+        she: {
+            pos: percent(0, 0, 100, 100),
+            bgImg: '/waves2.gif',
+            modules: [
+                {
+                    type: 'text',
+                    class: 'superBig',
+                    content: 'This was my first political radicalization'
+                }
+            ]
+        }
+    },
+    {
+        she: null,
+        he: {
+            pos: percent(30, 10, 80, 30),
+            bgImg: '/waves2.gif',
+            modules: [
+                {
+                    type: 'text',
+                    class: 'superBig',
+                    content: '✷*  🎀  2  🎀  *✷'
+                }
+            ]
+        }
+    },
+    {
+        she: {
+            pos: percent(20,20,20,70),
+            modules: [
+                {
+                    type: 'text',
+                    content: 'school locker room.'
+                },
+                {
+                    type: 'text',
+                    content: 'The air is humid and damp of teenage boys.'
+                },
+                {
+                    type: 'text',
+                    content: 'Not the best flavor. '
+                }
+            ]
+        }
+    },
+    {
+        he: {
+            pos: percent(20,60,20,70),
+            title: 'Wasn’t the point that girls are desirable?    ',
+            modules: [
+                {
+                    type: 'text',
+                    content: 'A boy puts his hand around my wist and calls it a girls’ ankle. <br><br> I did not rebut.<br>I was confused. <br><br>How should I know that being “girly” was a bad thing?'
+                }
+            ]
+        }
+    },
+    {
+        she: {
+            pos: percent(25, 50, 20,20),
+            modules: text('One week later, I understood that it was meant as an insult.')
+        }
+    },
+    {
+        she: {
+            pos: percent(25, 50, 20,40),
+            title: 'sackkneifer',
+            modules: [
+                {
+                    type: 'bgImg',
+                    url: '/sackkneifer.jpg',
+                    filter: false
+                }
+            ]
+        }
+    },
+    {
+        he: {
+            pos: percent(20,60,20,70),
+            title: 'Wasn’t the point that girls are desirable?    ',
+            next: false,
+            modules: [
+                {
+                    type: 'circleText',
+                    content: [' Turns out, I was also wearing the wrong kind of underwear.', 'Probably the start of the conflict.', 'Mine were called Sackkneifer – ball-pincher', 'in contrast to boxer shorts, obviously the correct kind of underwear.']
+                },
+                {
+                    type: 'bgImg',
+                    url: '/boxershorts.webp',
+                }
+            ]
+        }
+    },
+    {
+        he: {
+            pos: percent(25, 70, 20,40),
+            title: 'BOXERSHORTS ',
+            modules: [
+                {
+                    type: 'bgImg',
+                    url: '/boxershorts.webp',
+                    filter: false
+                }
+            ]
+        },
+        she: {
+            pos: percent(25, 50, 20,40),
+            title: 'SACKKNEIFER ',
+            modules: [
+                {
+                    type: 'bgImg',
+                    url: '/sackkneifer.jpg',
+                    filter: false
+                }
+            ]
+        }
+    },
+    {
+        she: {
+            pos: percent(0, 0, 100, 100),
+            bgImg: '/waves2.gif',
+            modules: [
+                {
+                    type: 'text',
+                    class: 'superBig',
+                    content: 'This was my first political radicalization'
+                }
+            ]
+        }
+    },
+    {
+        he: {
+            pos: percent(30, 10, 80, 30),
+            bgImg: '/waves2.gif',
+            modules: [
+                {
+                    type: 'text',
+                    class: 'superBig',
+                    content: '✷*  🎀  3  🎀  *✷'
+                },
+                {
+                    type: 'circleAttr',
+                    content: ['Maybe', 'my first radicalization was', 'when was born as an alien.']
+                }
+            ]
+        }
+    },
+    {
+        she: {
+            pos: percent(10, 50, 35, 70),
+            modules: [
+                {
+                    type: 'text',
+                    content: 'I like the narrative of aliens.'
+                },
+                {
+                    type: 'bgImg',
+                    url: '/me-alien.jpeg'
+                }
+            ]
+        }
+    },
+    {
+        he: {
+            pos: percent(20, 40, 30, 35),
+            next: false,
+            bgImg: '/sun1.gif',
+            modules: [
+                {
+                    type: 'text',
+                    content: '"Alien", as in',
+                    class: 'big'
+                },
+                {
+                    type: 'circleText',
+                    content: ['other diverging worlds.', 'Other countries.', 'And other times.']
+                }
+            ]
+        }
+    },
+    {
+        she: {
+            pos: percent(10, 50, 35, 70),
+            modules: [
+                {
+                    type: 'bgImg',
+                    url: '/me-alien.jpeg',
+                    filter: false
+                }
+            ]
+        },
+        he: {
+            pos: percent(20, 40, 30, 35),
+            next: false,
+            modules: [
+                {
+                    type: 'text',
+                    content: 'But also because aliens are fictional and defined by non-alien.',
+                },
+                {
+                    type: 'circleText',
+                    content: ['One-self can never be an alien', 'just the other']
+                }
+            ]
+        }
+    },
+    {
+        she: {
+            pos: percent(10, 50, 35, 70),
+            modules: [
+                {
+                    type: 'text',
+                    content: 'Our culture tricks us into making us aliens to ourselves.'
+                },
+                {
+                    type: 'text',
+                    content: 'We grow up understanding we are different.'
+                },
+                {
+                    type: 'text',
+                    content: 'But that difference is always defined for us in terms of absence of neurotypicality not as an equal, different being.'
+                }
+            ]
+        },
+    },
+    {
+        he: {
+            pos: percent(20, 40, 30, 55),
+            next: false,
+            modules: [
+                {
+                    type: 'text',
+                    content: 'The Anthropologist Mary Catherine Watson wring about power relations in Colonialism observed:',
+                },
+                {
+                    type: 'text',
+                    content: '“People who don’t wear shoes learn the language of people who do, not vice versa”'
+                },
+                {
+                    type: 'circleText',
+                    content: ['These words resonate with me from an autistic perspective. ', 'No,', 'don’t ask me to „put myself in your shoes“ when you don’t even think I can wear them.']
+                }
+            ]
+        }
+    },
+    {
+        he: {
+            pos: percent(20, 15, 30, 60),
+            bgImg: '/waves6.gif',
+            modules: [
+                {
+                    type: 'text',
+                    content: 'As a kid,'
+                }
+            ]
+
+        },
+        she: {
+            pos: percent(20, 60, 30, 60),
+            bgImg: '/waves6.gif',
+            modules: [
+                {
+                    type: 'text',
+                    content: 'I was always scared of the sandman.'
+                }
+            ]
+
+        }
+    },
+    {
+        he: {
+            pos: percent(20, 15, 30, 60),
+            modules: [
+                {
+                    type: 'bgImg',
+                    url: '/sandmann.jpeg'
+                },
+                {
+                    type: 'circleAttr',
+                    duration: 2600,
+                    content: ['At the same time,',
+                        'my bedroom window had to be left open',
+                        'in case peter-pan would realize',
+                        'that he left a little kid',
+                        'in the wrong universe',
+                        'and carry me away',
+                        'to a world of',
+                        'pirates,',
+                        'pixies,',
+                        'and mermaids.']
+                }
+            ]
+        },
+        she: {
+            bgImg: '/waves6.gif',
+            pos: percent(20, 60, 30, 60),
+            modules: text('Some guy coming into my room while I was sleeping and putting something in my eyes just felt like a relationship I wasn’t interested in.')
+        }
+    },
+    {
+        she: {
+            pos: percent(20,30,40,60),
+            next: false,
+            modules: [
+                {
+                    type: 'circleImg',
+                    filter: 1,
+                    url: ['Sunflower1.png', 'Sunflower2.png']
+                }
+            ]
+        }
+    },
+    { // fin
         she: {
             pos: {
                 top: 200,

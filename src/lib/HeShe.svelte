@@ -36,6 +36,8 @@
         console.log(mainFlow[current][gender])
         setTitle()
         mainFlow[current][gender].onMount()
+        window.focus()
+
     })
     onDestroy(() => {
         mainFlow[current][gender].onDestroy()
@@ -61,6 +63,8 @@
 
     $: availableModules = currentPage.modules.filter(module => comps[module.type])
 
+    $: hasImage = currentPage.modules.find(module => module.type === 'bgImg') || currentPage.bgImg
+
     let onKeyDown = (event) => {
         console.log('onKeyDown', event)
         if (event.key === 'ArrowRight') {
@@ -84,8 +88,12 @@
             // daddy.close();
         }
         if (NEXT === 'BACK') {
-            createPopup(`/${gender}`, {p: current - 1}, nextPage.pos, gender)
-            createPopup(`/${otherGender}`,{p: current - 1}, nextPageOther.pos, otherGender)
+            try {
+                createPopup(`/${gender}`, {p: current - 1}, undefined, gender)
+                createPopup(`/${otherGender}`,{p: current - 1}, undefined, otherGender)
+            } catch (e) {
+                console.log(e)
+            }
         }
         if (NEXT === 'self') {
             current++
@@ -148,11 +156,32 @@
     {/each}
 {/if}
 
+<div class="contentWrapper">
 {#each availableModules as module}
     <svelte:component this={comps[module.type]} config="{module}" on:NEXT={(e) => defaultClick(e,'NEXT')}/>
 {/each}
-
+</div>
+<div class="defaultBG">
 {#if currentPage.bgImg}
     <BgImg config="{{url: currentPage.bgImg}}"/>
+{:else if !hasImage}
+    <BgImg config="{{url: '/waves.gif'}}"/>
 {/if}
+</div>
 
+<style>
+    .contentWrapper {
+        box-sizing: border-box;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        gap: 0.2rem;
+    }
+    .defaultBG {
+        position: absolute;
+        z-index: -1000;
+    }
+</style>
