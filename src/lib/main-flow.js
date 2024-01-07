@@ -13,6 +13,49 @@ function percent(top, left, width, height) {
     }
 }
 
+function randomPos(width, height) {
+    width = width * screen.width / 100
+    height = height * screen.height / 100
+    return {
+        top: `${Math.floor(Math.random() * (screen.height - height))}`,
+        left: `${Math.floor(Math.random() * (screen.width - width))}`,
+        width: `${width}`,
+        height: `${height}`
+    }
+}
+
+function posToString(pos) {
+    if (pos === undefined) return ''
+    return `left=${pos.left},top=${pos.top},width=${pos.width},height=${pos.height}`
+}
+export const createPopup = (
+    url,
+    params = {},
+    pos = randomPos(20, 20),
+    name = Math.random().toString()) => {
+    console.log('createPopup', url, params, pos, name)
+    let searchParams = new URLSearchParams(params)
+    console.log('searchParams', searchParams, searchParams.toString())
+    if (searchParams.size > 0) url = url + '?' + searchParams.toString()
+    const features = [
+        `left=${pos.left}`,
+        `top=${pos.top}`,
+        `width=${pos.width}`,
+        `height=${pos.height}`,
+        `menubar=no`,
+        `toolbar=no`,
+        `location=no`,
+        `status=no`,
+        `resizable=yes`,
+        `scrollbars=no`
+    ].join(",");
+    // (crbug.com/1153004): The onPopupClose beforeunload works with about:blank popups...
+    return window.open(url, name, features);
+};
+
+// window.open(`/${gender}?p=${current - 1}`, `${gender}`, nextPageWindowString + ",popup,location=0");
+
+
 const DEFAULT_MODULES = {
     text: {
         type: 'text',
@@ -33,7 +76,12 @@ const DEFAULT_MODULES = {
     circleTitle: {
         type: 'circleTitle',
         content: ['Hello', 'world', 'again']
-    }
+    },
+    circleAttr: {
+        type: 'circleAttr',
+        content: ['Hello', 'world', 'again']
+        // duration: 2500
+    },
 }
 
 
@@ -48,23 +96,16 @@ const mainFlow = [
     { // 1
         she: null,
         he: {
-            pos: percent(20, 20, 80, 60),
-            next: false,
+            pos: percent(10, 20, 35, 80),
+            // next: false,
+            bgImg: '/weinachtsbaum.jpeg',
+            onMount() {
+                 createPopup('/singles/text', {txt: 'test sdf erf'}, randomPos(20, 10))
+
+            },
             modules: [
-                // {
-                //     type: 'circleText',
-                //     content: ['1Hello', '2world', '3again']
-                // },
                 {
-                    type: 'circleImg',
-                    url: ['https://picsum.photos/800/800', 'https://picsum.photos/200/200', 'https://picsum.photos/700/700']
-                },
-                // {
-                //     type: 'bgImg',
-                //     url: 'https://picsum.photos/800/800'
-                // },
-                {
-                    type: 'circleTitle',
+                    type: 'circleAttr',
                     content: ['Hello', 'world', 'again']
                 }
             ]

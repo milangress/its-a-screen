@@ -1,20 +1,23 @@
 <script>
-    export let gender = 'he'
+    import BgImg from "$lib/BgImg.svelte"
+
+    export let gender = undefined
     let otherGender = gender === 'he' ? 'she' : 'he'
 
-    import mainFlow from "$lib/main-flow.js"
+    import mainFlow, {createPopup} from "$lib/main-flow.js"
 
     import { page } from '$app/stores'
     import {goto} from "$app/navigation"
-    import {onMount} from "svelte"
+    import {onDestroy, onMount} from "svelte"
 
     import bgImg from "./BgImg.svelte"
     import text from "./Text.svelte"
     import circleText from "./CircleText.svelte"
     import circleImg from "./CircleImg.svelte"
+    import circleAttr from "$lib/CircleAttr.svelte"
     // eslint-disable-next-line no-unused-vars
     const comps = {
-        bgImg, text, circleText, circleImg
+        bgImg, text, circleText, circleImg, circleAttr
     }
 
     let current = 0
@@ -32,6 +35,12 @@
         }
         console.log(mainFlow[current][gender])
         setTitle()
+        mainFlow[current][gender].onMount()
+    })
+    onDestroy(() => {
+        mainFlow[current][gender].onDestroy()
+        // eslint-disable-next-line no-debugger
+        debugger
     })
 
     let currentPage = {}
@@ -62,21 +71,21 @@
         }
     }
     let defaultClick = (event, NEXT = currentPage.next) => {
-        console.log('NEXT', event, NEXT, currentPage.next)
+        console.log('NEXT', event, NEXT, currentPage)
         if (NEXT === undefined || NEXT === 'NEXT') {
             if (nextPage) {
-                window.open(`/${gender}?p=${current + 1}`, `${gender}`, nextPageWindowString + ",popup,location=0");
+                createPopup(`/${gender}`, {p: current + 1}, nextPage.pos, gender)
             }
             if (nextPageOther) {
-                window.open(`/${otherGender}?p=${current + 1}`, `${otherGender}`, nextPageOtherWindowString + ",popup,location=0");
+                createPopup(`/${otherGender}`,{p: current + 1}, nextPageOther.pos, otherGender)
             }
             // let daddy = window.self;
             // daddy.opener = window.self;
             // daddy.close();
         }
         if (NEXT === 'BACK') {
-            window.open(`/${gender}?p=${current - 1}`, `${gender}`, nextPageWindowString + ",popup,location=0");
-            window.open(`/${otherGender}?p=${current - 1}`, `${otherGender}`, nextPageOtherWindowString + ",popup,location=0");
+            createPopup(`/${gender}`, {p: current - 1}, nextPage.pos, gender)
+            createPopup(`/${otherGender}`,{p: current - 1}, nextPageOther.pos, otherGender)
         }
         if (NEXT === 'self') {
             current++
@@ -87,7 +96,7 @@
         }
     }
 
-    let title = 'he'
+    let title = ''
     function setTitle() {
         const currentDoc = mainFlow[current][gender]
         title = currentDoc.title || gender
@@ -142,4 +151,8 @@
 {#each availableModules as module}
     <svelte:component this={comps[module.type]} config="{module}" on:NEXT={(e) => defaultClick(e,'NEXT')}/>
 {/each}
+
+{#if currentPage.bgImg}
+    <BgImg config="{{url: currentPage.bgImg}}"/>
+{/if}
 
