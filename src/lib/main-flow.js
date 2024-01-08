@@ -583,6 +583,55 @@ const mainFlow = [
             ]
         }
     },
+    {
+        he: {
+            pos: percent(20, 15, 40, 20),
+            bgImg: '/waves6.gif',
+            modules: text('While writing this right now,')
+        }
+    },
+    {
+        he: {
+            pos: percent(70, 65, 40, 20),
+            bgImg: '/waves6.gif',
+            modules: [
+                {
+                    type: 'text',
+                    content: 'I’m not sure where I’m going.'
+                },
+                {
+                    type: "circleTitle",
+                    duration: 2000,
+                    content:['Digging up these stories', 'and talking about autism', 'is kind of my practice', 'right now,', ' I guess.']
+                }
+            ]
+        },
+        she: {
+            modules: [
+                {
+                    type: 'circleText',
+                    content: ['But for whom and why?',
+                        'Now this text/performance is for you.',
+                        'Although, should it be?',
+                        'And to be honest,',
+                        'maybe it’s more for myself?']
+                }
+            ]
+        }
+    },
+    {
+        she: {
+            pos: percent(20, 0, 100, 60),
+            bgImg: '/waves2.gif',
+            modules: [
+                {
+                    type: 'text',
+                    class: 'big',
+                    content: 'And at the same time I’m certainly interested in these “live” performance moments <br><br> (also thinking about the transcription tool for the pub launch ) <br><br>I’m more interested in the process itself and not what’s there in the end. '
+                }
+            ]
+        }
+    },
     { // fin
         she: {
             pos: {

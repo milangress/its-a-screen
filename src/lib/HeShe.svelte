@@ -120,7 +120,7 @@
                 }
                 title = circleTitle.content[titleCounter]
                 titleCounter++
-            }, 800);
+            }, circleTitle.duration || 1000);
         } else if (title.length >= 10){
             setInterval(function(){
                 title = title.substring(1, title.length) + title.substring(0, 1);
