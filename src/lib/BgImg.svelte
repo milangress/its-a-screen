@@ -28,6 +28,34 @@
     .filter-1 {
         filter: blur(3px) contrast(1.2) brightness(1) grayscale(100%) sepia(100%) hue-rotate(240deg);
     }
+    .filter-10 {
+        filter: blur(10px) contrast(1.5) brightness(1) grayscale(100%) sepia(100%) hue-rotate(240deg);
+    }
+    .filter-11 {
+        filter: blur(3px) contrast(1.2) brightness(1) grayscale(100%) sepia(100%) hue-rotate(300deg);
+    }
+    .filter-12 {
+        filter: blur(0px) contrast(2.5) brightness(1.4) grayscale(50%) sepia(100%) hue-rotate(240deg);
+    }
+    .filter-13 {
+        filter: blur(0px) contrast(2.5) brightness(1.4) grayscale(50%) sepia(100%) drop-shadow(16px 16px 20px red) hue-rotate(240deg);
+    }
+    .filter-14 {
+        filter: invert(75%) blur(0px) contrast(2.5) brightness(1.4) grayscale(100%) sepia(100%) hue-rotate(240deg);
+    }
+    .filter-15 {
+        filter: saturate(400%) contrast(3) brightness(1.4);
+    }
+    .filter-16 {
+        filter: drop-shadow(26px 26px 30px red) saturate(400%) contrast(3) brightness(1.4) hue-rotate(240deg);
+    }
+    .filter-17 {
+        filter: grayscale(1) brightness(0.5) contrast(500) blur(1px);
+    }
+    .filter-18 {
+        filter: grayscale(1) contrast(500);
+    }
+
     .bgImg {
         image-rendering: pixelated;
         position: fixed;

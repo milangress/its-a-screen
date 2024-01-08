@@ -1,10 +1,10 @@
 
 function percent(top, left, width, height) {
     //percentage to window size in pixels
-    top = top * screen.height / 100
-    left = left * screen.width / 100
-    width = width * screen.width / 100
-    height = height * screen.height / 100
+    top = top * screen.availHeight / 100
+    left = left * screen.availWidth / 100
+    width = width * screen.availWidth / 100
+    height = height * screen.availHeight / 100
     return {
         top: `${top}`,
         left: `${left}`,
@@ -14,15 +14,32 @@ function percent(top, left, width, height) {
 }
 
 function randomPos(width, height) {
-    width = width * screen.width / 100
-    height = height * screen.height / 100
+    width = width * screen.availWidth / 100
+    height = height * screen.availHeight / 100
     return {
-        top: `${Math.floor(Math.random() * (screen.height - height))}`,
-        left: `${Math.floor(Math.random() * (screen.width - width))}`,
+        top: `${Math.floor(Math.random() * (screen.availHeight - height))}`,
+        left: `${Math.floor(Math.random() * (screen.availWidth - width))}`,
         width: `${width}`,
         height: `${height}`
     }
 }
+
+function posGrid(rows, cols, posRow, posCol) {
+    const NAVBAR_HEIGHT = 64
+    const OFFSET_MENUEBAR = screen.height - screen.availHeight
+    console.log('posGrid', rows, cols, posRow, posCol)
+    const rowSize = (screen.availHeight - (NAVBAR_HEIGHT * rows)) / rows
+    const colSize = screen.availWidth / cols
+    console.log('rowSize', rowSize, screen.availHeight, rows)
+    return {
+        top: `${(posRow * rowSize) + (posRow * NAVBAR_HEIGHT) + OFFSET_MENUEBAR}`,
+        left: `${posCol * colSize}`,
+        width: `${colSize}`,
+        height: `${rowSize}`
+    }
+}
+
+
 
 function posToString(pos) {
     if (pos === undefined) return ''
@@ -530,6 +547,38 @@ const mainFlow = [
                     type: 'circleImg',
                     filter: 1,
                     url: ['Sunflower1.png', 'Sunflower2.png']
+                }
+            ]
+        }
+    },
+    {
+        she: {
+            pos: percent(30,40,20,40),
+            next: false,
+            onMount() {
+                const maxRows = 3
+                const maxCols = 5
+                for(let row = 0; row < maxRows; row++){ //this loops over the rows
+                    for(let column = 0; column < maxCols; column++){ //this loops over the columns
+                        const number = column + (row * maxCols)
+                        createPopup('/singles/sunflower', {num: number}, posGrid(maxRows, maxCols, row, column), `sunflower${number}`)
+                    }
+                }
+                // createPopup('/singles/sunflower', {}, posGrid(3, 5, 0, 0))
+            },
+            modules: [
+                {
+                    type: 'circleImg',
+                    filter: false,
+                    url: ['Sunflower1.png', 'Sunflower2.png']
+                },
+                {
+                    type: 'text',
+                    content: 'Fell free to try it out, Although I cannot promise you that it works.'
+                },
+                {
+                    type: 'text',
+                    content: 'But in the worst case, you just have a little snack in the morning and a way to spend some time.'
                 }
             ]
         }
