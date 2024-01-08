@@ -115,8 +115,17 @@ const mainFlow = [
     {
         she: {modules: []},
         he: {
-            title: 'WE ARE NOT AS SMALL AS YOU THINK',
-            modules: []
+            title: 'IT HAS TO START SOMEWHERE',
+            modules: [{
+                type: 'text',
+                content: 'on the wrong side of the river bank'
+            },
+                {
+                    type: 'bgImg',
+                    filter: 1,
+                    url: '/land1.gif',
+                }
+            ]
         }
     },
     {
@@ -161,17 +170,45 @@ const mainFlow = [
             modules: [
                 {
                     type: 'text',
-                    content: 'This was our Christmas three this year.'
+                    content: 'This was our Christmas tree.'
                 },
                 {
                     type: 'circleText',
-                    content: ['None of us had Christmas decoration,', '(it feels like that something to inherit and not to buy)', 'so each of us chose a sailor moon character, and we printed our different images of them to hang them on the tree.']
+                    content: ['None of us had any Christmas decoration,', '(somehow that feels like  something to inherit and not to buy)', 'so each of us chose a sailor moon character, and we printed different images of them to hang them on the tree.']
+                }
+            ]
+        }
+    },
+    {
+        he: {
+            pos: percent(10, 20, 35, 80),
+            modules: [
+                {
+                    type: 'bgImg',
+                    url: '/weinachtsbaum-sailor.jpeg',
+                    filter: 1
                 }
             ]
         }
     },
     { // 2
-        she: null,
+        she: {
+            pos: percent(60, 80, 25, 40),
+            onMount() {
+                const config = {
+                    url: '/sailor-saturn.jpeg',
+                    filter: 1
+                }
+                createPopup('/singles/img', {config: JSON.stringify(config)}, randomPos(30, 40))
+            },
+            modules: [
+                {
+                    type: 'bgImg',
+                    url: '/sailor-saturn.jpeg',
+                    filter: null
+                }
+            ]
+        },
         he: {
             pos: percent(30, 10, 80, 30),
             bgImg: '/waves2.gif',
@@ -190,7 +227,7 @@ const mainFlow = [
             modules: [
                 {
                     type: 'text',
-                    content: 'After Christmas this year, we all got a late Christmas gift on the 26. of December. '
+                    content: 'After Christmas this year, I got a late Christmas gift on the 26. of December.'
                 }
             ]
         }
@@ -201,7 +238,8 @@ const mainFlow = [
             modules: [
                 {
                     type: 'bgImg',
-                    url: '/schauble.jpg'
+                    url: '/schauble.jpg',
+                    filter: 1
                 }
             ]
 
@@ -213,12 +251,17 @@ const mainFlow = [
     },
     {
         she: {
-            pos: percent(50, 50, 35, 25),
+            pos: percent(50, 50, 35, 40),
             next: false,
             modules: [
                 {
+                    type: 'bgImg',
+                    url: '/waves4.gif',
+                    filter: 10
+                },
+                {
                     type: 'circleText',
-                    content: ['If you don’t know him, he is kind of the German Henry Kissinger.', 'Or maybe even the European one.', 'This brought back memories of the 2010 European debt crisis. Where Schäuble was deeply involved in the austerity measurements / punishment of Greece resulting in the sellout of Greek infrastructure to German and international companies to the enrichment of Germany.']
+                    content: ['If you don’t know him, he is kind of the German Henry Kissinger.', 'Or maybe even the European one.', 'This brought back memories of the 2010 European debt crisis.', 'Where Schäuble was deeply involved in the austerity measurements / punishment of Greece', 'resulting in the sellout of Greek infrastructure to German and international companies to the enrichment of Germany.']
                 }
             ]
         }
@@ -227,12 +270,12 @@ const mainFlow = [
         he: {
             pos: percent(70,10,30,10),
             onMount() {
-                // createPopup('/singles/text', {txt: '»ein Land der Nichtstuer und Korrupteure«,<br> "a country of do-nothings and corruptors"'}, randomPos(40, 10))
-                // createPopup('/singles/text', {txt: 'jetzt müsse endlich »Schluss sein mit der Schummelei«;<br> Now "the cheating must finally come to an end"'}, randomPos(40, 10))
-                // createPopup('/singles/text', {txt: '»diese Griechen« seien pleite, aber Milliarden-Bettler«. <br> "these Greeks" are broke, but "beggars worth billions"'}, randomPos(40, 10))
-                // createPopup('/singles/text', {txt: 'Man dürfe jetzt »keineswegs die Faulheit der Griechen unterstützen«; <br> One should now "by no means support the laziness of the Greeks"'}, randomPos(40, 15))
-                // createPopup('/singles/text', {txt: 'schließlich sei »Griechenland im Grunde ein orientalisches Land«, <br> After all, "Greece is basically an oriental country"'}, randomPos(45, 10))
-                // createPopup('/singles/text', {txt: 'in Hellas herrschten »orientalische Lebensgesetze«. <br> Hellas was governed by "oriental laws of life"'}, randomPos(40, 10))
+                createPopup('/singles/text', {txt: '»ein Land der Nichtstuer und Korrupteure«,<br> "a country of do-nothings and corruptors"'}, randomPos(40, 10))
+                createPopup('/singles/text', {txt: 'jetzt müsse endlich »Schluss sein mit der Schummelei«;<br> Now "the cheating must finally come to an end"'}, randomPos(40, 10))
+                createPopup('/singles/text', {txt: '»diese Griechen« seien pleite, aber Milliarden-Bettler«. <br> "these Greeks" are broke, but "beggars worth billions"'}, randomPos(40, 10))
+                createPopup('/singles/text', {txt: 'Man dürfe jetzt »keineswegs die Faulheit der Griechen unterstützen«; <br> One should now "by no means support the laziness of the Greeks"'}, randomPos(40, 15))
+                createPopup('/singles/text', {txt: 'schließlich sei »Griechenland im Grunde ein orientalisches Land«, <br> After all, "Greece is basically an oriental country"'}, randomPos(45, 10))
+                createPopup('/singles/text', {txt: 'in Hellas herrschten »orientalische Lebensgesetze«. <br> Hellas was governed by "oriental laws of life"'}, randomPos(40, 10))
 
             },
             modules: text('Which has a long history…')
@@ -471,7 +514,7 @@ const mainFlow = [
             modules: [
                 {
                     type: 'text',
-                    content: 'The Anthropologist Mary Catherine Watson wring about power relations in Colonialism observed:',
+                    content: 'The Anthropologist Mary Catherine Watson writing about power relations in Colonialism observed:',
                 },
                 {
                     type: 'text',
@@ -607,6 +650,7 @@ const mainFlow = [
             ]
         },
         she: {
+            next: false,
             modules: [
                 {
                     type: 'circleText',
@@ -643,7 +687,7 @@ const mainFlow = [
             modules: [
                 {
                     type: 'text',
-                    content: 'Hello world'
+                    content: 'Like this is not even recorded…'
                 },
                 {
                     type: 'bgImg',
@@ -661,7 +705,7 @@ const mainFlow = [
             modules: [
                 {
                     type: 'text',
-                    content: 'Hello world'
+                    content: 'and now it’s over… and gone.'
                 },
                 {
                     type: 'bgImg',

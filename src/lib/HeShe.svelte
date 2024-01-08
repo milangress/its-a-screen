@@ -28,11 +28,10 @@
             window.close()
         }
 
-        if(mainFlow[current][gender].pos) {
-            window.moveTo(mainFlow[current][gender].pos?.left, mainFlow[current][gender].pos?.top)
-            window.resizeTo(mainFlow[current][gender].pos?.width, mainFlow[current][gender].pos?.height)
-            // window.moveTo(0,0)
-        }
+        resizeWindow()
+        window.setTimeout(() => {
+            resizeWindow()
+        }, 300)
         console.log(mainFlow[current][gender])
         setTitle()
         mainFlow[current][gender].onMount()
@@ -44,6 +43,13 @@
         // eslint-disable-next-line no-debugger
         debugger
     })
+
+    function resizeWindow() {
+        if (mainFlow[current][gender].pos) {
+            window.moveTo(mainFlow[current][gender].pos?.left, mainFlow[current][gender].pos?.top)
+            window.resizeTo(mainFlow[current][gender].pos?.width, mainFlow[current][gender].pos?.height)
+        }
+    }
 
     let currentPage = {}
     $: currentPage = mainFlow[current] ? mainFlow[current][gender] : {modules: []}
@@ -72,6 +78,10 @@
         }
         if (event.key === 'ArrowLeft') {
             defaultClick(event, 'BACK')
+        }
+        if (event.code === 'Space') {
+            console.log('Space Resize')
+            resizeWindow()
         }
     }
     let defaultClick = (event, NEXT = currentPage.next) => {
@@ -139,7 +149,7 @@
 
 <svelte:body on:click={defaultClick } on:keydown={onKeyDown}/>
 
-{#if false || current === 0}
+{#if false}
     {gender}, {otherGender}
     <hr>
     current: {current}
