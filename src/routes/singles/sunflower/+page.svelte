@@ -38,10 +38,11 @@
         5: 'on the window sims,',
         11: 'hoping the sandman',
         6: 'would get distracted',
-        7: 'on its ways to my eyes',
+        7: 'on his ways to my eyes',
         2: 'and peter-pan',
-        8: 'would fly right in',
+        8: 'would fly',
         14: 'past the sunflower seeds.',
+        13: 'and carry me away',
     }
 
     $: count = [12, 1, 5, 11, 6, 7, 2, 8, 14].indexOf(num)

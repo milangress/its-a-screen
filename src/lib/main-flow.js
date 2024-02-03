@@ -174,7 +174,7 @@ const mainFlow = [
                 },
                 {
                     type: 'circleText',
-                    content: ['None of us had any Christmas decoration,', '(somehow that feels like  something to inherit and not to buy)', 'so each of us chose a sailor moon character, and we printed different images of them to hang them on the tree.']
+                    content: ['None of us had any Christmas decoration,', "(maybe that's  something to inherit and not to buy)", 'so each of us chose a sailor moon character, and we printed different images of them to hang them on the tree.']
                 }
             ]
         }
@@ -275,7 +275,7 @@ const mainFlow = [
                 createPopup('/singles/text', {txt: '»diese Griechen« seien pleite, aber Milliarden-Bettler«. <br> "these Greeks" are broke, but "beggars worth billions"'}, randomPos(40, 10))
                 createPopup('/singles/text', {txt: 'Man dürfe jetzt »keineswegs die Faulheit der Griechen unterstützen«; <br> One should now "by no means support the laziness of the Greeks"'}, randomPos(40, 15))
                 createPopup('/singles/text', {txt: 'schließlich sei »Griechenland im Grunde ein orientalisches Land«, <br> After all, "Greece is basically an oriental country"'}, randomPos(45, 10))
-                createPopup('/singles/text', {txt: 'in Hellas herrschten »orientalische Lebensgesetze«. <br> Hellas was governed by "oriental laws of life"'}, randomPos(40, 10))
+                createPopup('/singles/text', {txt: 'in Hellas herrschten »orientalische Lebensgesetze«. <br> Hellas is governed by "oriental laws of life"'}, randomPos(40, 10))
 
             },
             modules: text('Which has a long history…')
@@ -621,7 +621,7 @@ const mainFlow = [
                 },
                 {
                     type: 'text',
-                    content: 'But in the worst case, you just have a little snack in the morning and a way to spend some time.'
+                    content: 'But in the worst case, you just have a little snack in the morning and a way to spend some time. Eating sunflower seed is also a kind of stimming.'
                 }
             ]
         }
