@@ -40,11 +40,6 @@ function posGrid(rows, cols, posRow, posCol) {
 }
 
 
-
-function posToString(pos) {
-    if (pos === undefined) return ''
-    return `left=${pos.left},top=${pos.top},width=${pos.width},height=${pos.height}`
-}
 export const createPopup = (
     url,
     params = {},
