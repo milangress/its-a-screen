@@ -383,7 +383,7 @@ const mainFlow = [
                 {
                     type: 'bgImg',
                     url: '/boxershorts.webp',
-                    filter: false
+                    filter: 1
                 }
             ]
         },
@@ -394,7 +394,7 @@ const mainFlow = [
                 {
                     type: 'bgImg',
                     url: '/sackkneifer.jpg',
-                    filter: false
+                    filter: 1
                 }
             ]
         }
