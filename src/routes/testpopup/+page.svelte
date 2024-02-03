@@ -24,4 +24,5 @@
 	<title>{randomWord}</title>
 </svelte:head>
 
+<!-- eslint-disable-next-line -->
 <h2 on:click={openMultipleWindows}>{randomWord}</h2>

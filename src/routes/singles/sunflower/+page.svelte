@@ -57,7 +57,7 @@
 
 <svelte:body on:click={handleClick} />
 
-/* eslint-disable-next-line */
+<!-- eslint-disable-next-line -->
 <div on:click={handleClick} role="button" tabindex="-1" class="hover">
 	{#if showText}
 		<Text config={{ content: text }} />

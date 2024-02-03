@@ -3,6 +3,7 @@
 </script>
 
 <div>
+	<!-- eslint-disable-next-line -->
 	<p class={config.class}>{@html config.content}</p>
 </div>
 

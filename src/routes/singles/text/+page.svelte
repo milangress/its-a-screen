@@ -18,6 +18,8 @@
 <svelte:head>
 	<title>{text}</title>
 </svelte:head>
+
+<!-- eslint-disable-next-line -->
 <div on:click={click}>
 	<Text config={{ content: text }} />
 	<BgImg config={{ url: '/waves5.gif' }}></BgImg>

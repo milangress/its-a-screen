@@ -4,4 +4,5 @@
 	}
 </script>
 
+<!-- eslint-disable-next-line -->
 <a on:click={openPopup}>test</a>
