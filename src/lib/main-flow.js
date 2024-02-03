@@ -95,6 +95,7 @@ const DEFAULT_MODULES = {
         // duration: 2500
     },
 }
+console.log('DEFAULT_MODULES', DEFAULT_MODULES)
 
 function text(content = 'txt') {
     return [
