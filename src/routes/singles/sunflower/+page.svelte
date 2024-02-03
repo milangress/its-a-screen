@@ -45,7 +45,7 @@
         13: 'and carry me away',
     }
 
-    $: count = [12, 1, 5, 11, 6, 7, 2, 8, 14].indexOf(num)
+    $: count = [12, 1, 5, 11, 6, 7, 2, 8, 14, 13].indexOf(num)
     $: countString = count >= 0 ? count.toString() : '0'
     $: console.log(num, num === 8)
     $: text = texts[num] || ''
@@ -58,7 +58,7 @@
 <svelte:body on:click={handleClick } />
 
 
-<div on:click={handleClick}>
+<div on:click={handleClick} class="hover">
 
 {#if showText}
     <Text config={{content: text}}/>
@@ -70,5 +70,13 @@
 </div>
 
 
-<!--<h1>{num}</h1>-->
+<style>
+    .hover {
+        cursor: pointer;
+        transition: filter 3.5s ease-in-out;
+    }
+    .hover:hover {
+        filter: blur(25px) contrast(1.5) brightness(1.5);
+    }
+</style>
 
