@@ -582,6 +582,31 @@ const mainFlow = [
         }
     },
     {
+        he: {
+            pos: percent(20, 15, 30, 60),
+            modules: [
+                {
+                    type: 'bgImg',
+                    url: '/sandmann.jpeg'
+                },
+                {
+                    type: 'circleAttr',
+                    duration: 2600,
+                    content: ['At the same time,',
+                        'my bedroom window had to be left open',
+                        'in case peter-pan would realize',
+                        'that he left a little kid',
+                        'in the wrong universe',
+                        'and carry me away',
+                        'to a world of',
+                        'pirates,',
+                        'pixies,',
+                        'and mermaids.']
+                }
+            ]
+        }
+    },
+    {
         she: {
             pos: percent(20,30,40,60),
             next: false,
