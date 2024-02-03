@@ -58,7 +58,7 @@
 <svelte:body on:click={handleClick } />
 
 
-<div on:click={handleClick} class="hover">
+<div on:click={handleClick} role="button" class="hover">
 
 {#if showText}
     <Text config={{content: text}}/>
