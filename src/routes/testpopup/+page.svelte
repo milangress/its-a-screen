@@ -8,6 +8,7 @@
 	const currentPage = $page.route.id;
 
 	function openMultipleWindows() {
+		if (!currentPage) throw new Error('No current page');
 		for (let i = 0; i < 3; i++) {
 			let l = Math.random() * window.screen.width;
 			let h = Math.random() * window.screen.height;
